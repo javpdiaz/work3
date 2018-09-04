@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ums list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Um</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for um in ums %}
+            <tr>
+                <td><a href="{{ path('um_show', { 'id': um.id }) }}">{{ um.id }}</a></td>
+                <td>{{ um.name }}</td>
+                <td>{{ um.um }}</td>
+                <td>{{ um.description }}</td>
+                <td>{% if um.active %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('um_show', { 'id': um.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('um_edit', { 'id': um.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('um_new') }}">Create a new um</a>
+        </li>
+    </ul>
+{% endblock %}
