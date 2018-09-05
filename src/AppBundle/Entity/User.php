@@ -58,9 +58,9 @@ class User implements UserInterface, \Serializable
     private $isActive;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="role", type="integer")
+     * @ORM\Column(name="role", type="string", length=255)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Roles")
      */
     private $role;
@@ -181,7 +181,7 @@ class User implements UserInterface, \Serializable
     /**
      * Set role
      *
-     * @param integer $role
+     * @param string $role
      *
      * @return User
      */
@@ -195,7 +195,7 @@ class User implements UserInterface, \Serializable
     /**
      * Get role
      *
-     * @return int
+     * @return string
      */
     public function getRole()
     {

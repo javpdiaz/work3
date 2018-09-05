@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends Controller
 {
     /**
-     * @Route("/login", name="login_page")
+     * @Route("/login2", name="login_page")
      */
     public function indexAction()
     {

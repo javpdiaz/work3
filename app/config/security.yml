@@ -30,5 +30,17 @@ security:
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
 
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout:
+                path: /logout
+                target: /
+
             provider: our_db_provider
 
+    access_control:
+        - {path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - {path: ^/registro, roles: ROLE_ADMIN}
+        - {path: ^/, roles: IS_AUTHENTICATED_FULLY}
