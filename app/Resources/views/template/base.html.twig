@@ -50,7 +50,7 @@
                     <div class="container">
                         <!-- BEGIN LOGO -->
                         <div class="page-logo">
-                            <a href="index.html">
+                            <a href="{{ path('princ_page') }}">
                                 <img src="{{ asset('assets/layouts/layout3/img/logo-default.jpg') }}" alt="logo" class="logo-default">
                             </a>
                         </div>
@@ -72,10 +72,20 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-default">
 
+                                        {% if is_granted('ROLE_ADMIN') %}
+
+                                            <li>
+                                                <a href="{{ path('registro_page') }}">
+                                                    <i class="icon-user"></i> Registro </a>
+                                            </li>
+
+                                        {% endif %}
+
                                         <li>
                                             <a href="{{ path('logout') }}">
-                                                <i class="icon-key"></i> Log Out </a>
+                                                <i class="icon-lock"></i> Salir </a>
                                         </li>
+
                                     </ul>
                                 </li>
                                 <!-- END USER LOGIN DROPDOWN -->
