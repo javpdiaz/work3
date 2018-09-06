@@ -353,37 +353,15 @@
                                 <!-- BEGIN USER LOGIN DROPDOWN -->
                                 <li class="dropdown dropdown-user dropdown-dark">
                                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <img alt="" class="img-circle" src="{{ asset('assets/layouts/layout3/img/avatar9.jpg') }}">
-                                        <span class="username username-hide-mobile">Nick</span>
+                                        <img alt="" class="img-circle" src="{{ asset('misassets/image/user2.png') }}">
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <span class="username username-hide-mobile">{{ app.user.username }}</span>
+                                        {% endif %}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-default">
+
                                         <li>
-                                            <a href="page_user_profile_1.html">
-                                                <i class="icon-user"></i> My Profile </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_calendar.html">
-                                                <i class="icon-calendar"></i> My Calendar </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_inbox.html">
-                                                <i class="icon-envelope-open"></i> My Inbox
-                                                <span class="badge badge-danger"> 3 </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="app_todo_2.html">
-                                                <i class="icon-rocket"></i> My Tasks
-                                                <span class="badge badge-success"> 7 </span>
-                                            </a>
-                                        </li>
-                                        <li class="divider"> </li>
-                                        <li>
-                                            <a href="page_user_lock_1.html">
-                                                <i class="icon-lock"></i> Lock Screen </a>
-                                        </li>
-                                        <li>
-                                            <a href="page_user_login_1.html">
+                                            <a href="{{ path('logout') }}">
                                                 <i class="icon-key"></i> Log Out </a>
                                         </li>
                                     </ul>
@@ -1221,41 +1199,7 @@
         </div>
     </div>
 </div>
-<!-- BEGIN QUICK NAV -->
-<nav class="quick-nav">
-    <a class="quick-nav-trigger" href="#0">
-        <span aria-hidden="true"></span>
-    </a>
-    <ul>
-        <li>
-            <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" target="_blank" class="active">
-                <span>Purchase Metronic</span>
-                <i class="icon-basket"></i>
-            </a>
-        </li>
-        <li>
-            <a href="https://themeforest.net/item/metronic-responsive-admin-dashboard-template/reviews/4021469?ref=keenthemes" target="_blank">
-                <span>Customer Reviews</span>
-                <i class="icon-users"></i>
-            </a>
-        </li>
-        <li>
-            <a href="http://keenthemes.com/showcast/" target="_blank">
-                <span>Showcase</span>
-                <i class="icon-user"></i>
-            </a>
-        </li>
-        <li>
-            <a href="http://keenthemes.com/metronic-theme/changelog/" target="_blank">
-                <span>Changelog</span>
-                <i class="icon-graph"></i>
-            </a>
-        </li>
-    </ul>
-    <span aria-hidden="true" class="quick-nav-bg"></span>
-</nav>
-<div class="quick-nav-overlay"></div>
-<!-- END QUICK NAV -->
+
 
 {% block javascripts %}
 <!-- BEGIN CORE PLUGINS -->

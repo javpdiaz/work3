@@ -26,13 +26,13 @@ class LoginController extends Controller
             return $this->redirectToRoute('princ_page');
         }
 
-        return $this->render('userform/login.html.twig', array('form'=>$form->createView()));
+        return $this->render('login/login.html.twig', array('form'=>$form->createView()));
     }
 
     /**
      * @Route("/logout", name="logout")
      */
     public function LogoutAction(){
-
+//        return $this->redirect('/login');
     }
 }
