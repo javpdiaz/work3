@@ -40,7 +40,14 @@ security:
 
             provider: our_db_provider
 
+    role_hierarchy:
+        #El rol admin integra los roles de usuario
+        ROLE_ADMIN: ROLE_USER
+
     access_control:
+          #Para que cualquiera pueda acceder a la pagina de login
         - {path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+          #Solo a la pagina de registro los autentificados como admin
         - {path: ^/registro, roles: ROLE_ADMIN}
+          #Cualquiera que este autentificado
         - {path: ^/, roles: IS_AUTHENTICATED_FULLY}
