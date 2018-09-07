@@ -27,6 +27,11 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min="3",
+     *     minMessage="El valor introducido debe ser mayor a {{ limit }}"
+     * )
      */
     private $username;
 
@@ -34,6 +39,7 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=true)
+     * @Assert\Email()
      */
     private $email;
 
