@@ -30,7 +30,7 @@ class User implements UserInterface, \Serializable
      * @Assert\NotBlank()
      * @Assert\Length(
      *     min="3",
-     *     minMessage="El valor introducido debe ser mayor a {{ limit }}"
+     *     minMessage="El valor introducido debe ser mayor a {{ limit }} caracteres"
      * )
      */
     private $username;
