@@ -1,41 +1,63 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Insumos list</h1>
+{#{% block body %}#}
+    {#<h1>Insumos list</h1>#}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for insumo in insumos %}
-            <tr>
-                <td><a href="{{ path('insumo_show', { 'id': insumo.id }) }}">{{ insumo.id }}</a></td>
-                <td>{{ insumo.name }}</td>
-                <td>{% if insumo.active %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('insumo_show', { 'id': insumo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('insumo_edit', { 'id': insumo.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Name</th>#}
+                {#<th>Active</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for insumo in insumos %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('insumo_show', { 'id': insumo.id }) }}">{{ insumo.id }}</a></td>#}
+                {#<td>{{ insumo.name }}</td>#}
+                {#<td>{% if insumo.active %}Yes{% else %}No{% endif %}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('insumo_show', { 'id': insumo.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('insumo_edit', { 'id': insumo.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
 
-    <ul>
-        <li>
-            <a href="{{ path('insumo_new') }}">Create a new insumo</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('insumo_new') }}">Create a new insumo</a>#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+
+
+{% extends 'template/table.html.twig' %}
+
+{% block headtable %}
+
+    <tr>
+        <th>Nombre</th>
+        <th>UM</th>
+    </tr>
+
+{% endblock %}
+
+
+{% block bodytable %}
+    {% for item in insumos %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.um }}</td>
+        </tr>
+    {% endfor %}
 {% endblock %}
