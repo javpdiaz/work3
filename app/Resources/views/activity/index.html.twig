@@ -1,43 +1,66 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Activities list</h1>
+{#{% block body %}#}
+    {#<h1>Activities list</h1>#}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for activity in activities %}
-            <tr>
-                <td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity.id }}</a></td>
-                <td>{{ activity.name }}</td>
-                <td>{{ activity.description }}</td>
-                <td>{% if activity.active %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('activity_show', { 'id': activity.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('activity_edit', { 'id': activity.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {#<table>#}
+        {#<thead>#}
+            {#<tr>#}
+                {#<th>Id</th>#}
+                {#<th>Name</th>#}
+                {#<th>Description</th>#}
+                {#<th>Active</th>#}
+                {#<th>Actions</th>#}
+            {#</tr>#}
+        {#</thead>#}
+        {#<tbody>#}
+        {#{% for activity in activities %}#}
+            {#<tr>#}
+                {#<td><a href="{{ path('activity_show', { 'id': activity.id }) }}">{{ activity.id }}</a></td>#}
+                {#<td>{{ activity.name }}</td>#}
+                {#<td>{{ activity.description }}</td>#}
+                {#<td>{% if activity.active %}Yes{% else %}No{% endif %}</td>#}
+                {#<td>#}
+                    {#<ul>#}
+                        {#<li>#}
+                            {#<a href="{{ path('activity_show', { 'id': activity.id }) }}">show</a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="{{ path('activity_edit', { 'id': activity.id }) }}">edit</a>#}
+                        {#</li>#}
+                    {#</ul>#}
+                {#</td>#}
+            {#</tr>#}
+        {#{% endfor %}#}
+        {#</tbody>#}
+    {#</table>#}
 
-    <ul>
-        <li>
-            <a href="{{ path('activity_new') }}">Create a new activity</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('activity_new') }}">Create a new activity</a>#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+
+{% extends 'template/table.html.twig' %}
+
+{% block headtable %}
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+
+{% endblock %}
+
+
+{% block bodytable %}
+    {% for item in activities %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+        </tr>
+    {% endfor %}
 {% endblock %}
