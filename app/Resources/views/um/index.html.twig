@@ -46,6 +46,8 @@
 
 {% extends 'template/table.html.twig' %}
 
+{% block TableTitle %} Tabla Unidad de Medida {% endblock %}
+
 {% block headtable %}
 
     <tr>
@@ -53,7 +55,8 @@
         <th>Name</th>
         <th>Um</th>
         <th>Description</th>
-        <th>Acciones</th>
+        <th>Mostrar</th>
+        <th>Editar</th>
     </tr>
 
 {% endblock %}
@@ -66,7 +69,8 @@
             <td>{{ item.name }}</td>
             <td>{{ item.um }}</td>
             <td>{{ item.description }}</td>
-            <td><a class="btn btn-info" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i></a></td>
+            <td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>
+            <td><a class="btn btn-outline btn-circle btn-sm purple" href="{{ path('um_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a></td>
         </tr>
     {% endfor %}
 {% endblock %}
