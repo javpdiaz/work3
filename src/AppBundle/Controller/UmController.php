@@ -48,7 +48,8 @@ class UmController extends Controller
             $em->persist($um);
             $em->flush();
 
-            return $this->redirectToRoute('um_show', array('id' => $um->getId()));
+            //return $this->redirectToRoute('um_show', array('id' => $um->getId()));
+            return $this->redirectToRoute('um_index', array('id' => $um->getId()));
         }
 
         return $this->render('um/new.html.twig', array(
@@ -88,7 +89,8 @@ class UmController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('um_edit', array('id' => $um->getId()));
+            //return $this->redirectToRoute('um_edit', array('id' => $um->getId()));
+            return $this->redirectToRoute('um_index', array('id' => $um->getId()));
         }
 
         return $this->render('um/edit.html.twig', array(
