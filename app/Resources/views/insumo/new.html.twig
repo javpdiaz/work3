@@ -1,16 +1,51 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Insumo creation</h1>
+{#{% block body %}#}
+    {#<h1>Insumo creation</h1>#}
+
+    {#{{ form_start(form) }}#}
+        {#{{ form_widget(form) }}#}
+        {#<input type="submit" value="Create" />#}
+    {#{{ form_end(form) }}#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('insumo_index') }}">Back to the list</a>#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+
+{% extends 'template/table.html.twig' %}
+
+{% block TableTitle %}Nuevo Elemento{% endblock %}
+{% block tableIco %} fa fa-leaf {% endblock %}
+{% block dataTableCSS %} {% endblock %}
+{% block nuevoElemento %} {% endblock %}
+
+{% block headtable %}
+
+    <tr>
+        <th>Nombre</th>
+        <th>UM</th>
+        <th>Activo</th>
+        <th>Guardar</th>
+        <th>Volver</th>
+    </tr>
+
+{% endblock %}
+
+{% block bodytable %}
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+
+    <td>{{ form_widget(form.name) }}</td>
+    <td>{{ form_widget(form.um) }}</td>
+    <td>{{ form_widget(form.active) }}</td>
+    <td><button class="btn btn-outline btn-circle btn-sm green" type="submit" ><i class="fa fa-save"></i> Guardar</button></td>
+    <td><a class="btn btn-outline btn-circle btn-sm red" href="{{ path('insumo_index') }}"><i class="fa fa-mail-reply"></i> Volver a la Lista</a></td>
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('insumo_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
+
+{% block dataTableJS %} {% endblock %}

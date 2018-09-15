@@ -23,7 +23,7 @@
 {% extends 'template/table.html.twig' %}
 
 {% block TableTitle %}Editar elemento{% endblock %}
-
+{% block dataTableCSS %} {% endblock %}
 {% block nuevoElemento %} {% endblock %}
 
 {% block headtable %}
@@ -45,11 +45,12 @@
     <td>{{ form_widget(edit_form.name) }}</td>
     <td>{{ form_widget(edit_form.um) }}</td>
     <td>{{ form_widget(edit_form.active) }}</td>
-    <td><button class="btn btn-outline btn-circle btn-sm green" type="submit" >Guardar</button></td>
-    {#<td>{{ form_widget(edit_form.submit) }} </td>#}
-    <td><a class="btn btn-outline btn-circle btn-sm red" href="{{ path('insumo_index') }}"><i class="fa fa-mail-reply"></i> Back to the list</a></td>
+    <td><button class="btn btn-outline btn-circle btn-sm green" type="submit" ><i class="fa fa-save"></i> Guardar</button></td>
+    <td><a class="btn btn-outline btn-circle btn-sm red" href="{{ path('insumo_index') }}"><i class="fa fa-mail-reply"></i> Volver a la Lista</a></td>
 
     {{ form_end(edit_form) }}
 
 {% endblock %}
+
+{% block dataTableJS %} {% endblock %}
 

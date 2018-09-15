@@ -9,7 +9,11 @@
     <link href="{{ asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    {#Para quitar la opcion del datatable#}
+    {% block dataTableCSS %}
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+    {% endblock %}
     <link href="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
@@ -49,20 +53,19 @@
                                         <div class="portlet box green">
                                             <div class="portlet-title">
                                                 <div class="caption">
-                                                    <i class="fa fa-table"></i>{% block TableTitle %} Buttons {% endblock %}</div>
+                                                    <i class="{% block tableIco %}fa fa-table {% endblock %}"></i>{% block TableTitle %} Buttons {% endblock %}</div>
                                                 <div class="tools"> </div>
                                             </div>
                                             <div class="portlet-body">
 
+                                                {#Poner o quitar el boton "Nuevo Elemento"#}
                                                 {% block nuevoElemento %}
                                                 <div class="table-toolbar">
 
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="btn-group">
-                                                                <button id="sample_editable_1_new" class="btn green"> Nuevo Elemento
-                                                                    <i class="fa fa-plus"></i>
-                                                                </button>
+                                                                <a href="{% block URLnuevoElemento %} # {% endblock %}" id="sample_editable_1_new" class="btn green"> Nuevo Elemento <i class="fa fa-plus"></i> </a>
                                                             </div>
                                                         </div>
 
@@ -116,8 +119,13 @@
 <script src="{{ asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+{#Quitar la opcion del datatable#}
+{% block dataTableJS %}
 <script src="{{ asset('assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
 <script src="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->

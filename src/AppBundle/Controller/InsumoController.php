@@ -48,7 +48,8 @@ class InsumoController extends Controller
             $em->persist($insumo);
             $em->flush();
 
-            return $this->redirectToRoute('insumo_show', array('id' => $insumo->getId()));
+//            return $this->redirectToRoute('insumo_show', array('id' => $insumo->getId()));
+            return $this->redirectToRoute('insumo_index', array('id' => $insumo->getId()));
         }
 
         return $this->render('insumo/new.html.twig', array(
@@ -88,7 +89,8 @@ class InsumoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('insumo_edit', array('id' => $insumo->getId()));
+//            return $this->redirectToRoute('insumo_edit', array('id' => $insumo->getId()));
+            return $this->redirectToRoute('insumo_index', array('id' => $insumo->getId()));
         }
 
         return $this->render('insumo/edit.html.twig', array(
