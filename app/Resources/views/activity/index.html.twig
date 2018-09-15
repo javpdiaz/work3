@@ -65,8 +65,8 @@
             <td>{{ item.id }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.description }}</td>
-            <td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>
-            <td><a class="btn btn-outline btn-circle btn-sm purple" href="{{ path('um_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a></td>
+            <td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('activity_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>
+            <td><a class="btn btn-outline btn-circle btn-sm purple" href="{{ path('activity_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a></td>
         </tr>
     {% endfor %}
 {% endblock %}

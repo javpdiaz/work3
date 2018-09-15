@@ -1,21 +1,55 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block body %}
-    <h1>Insumo edit</h1>
+{#{% block body %}#}
+    {#<h1>Insumo edit</h1>#}
+
+    {#{{ form_start(edit_form) }}#}
+        {#{{ form_widget(edit_form) }}#}
+        {#<input type="submit" value="Edit" />#}
+    {#{{ form_end(edit_form) }}#}
+
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('insumo_index') }}">Back to the list</a>#}
+        {#</li>#}
+        {#<li>#}
+            {#{{ form_start(delete_form) }}#}
+                {#<input type="submit" value="Delete">#}
+            {#{{ form_end(delete_form) }}#}
+        {#</li>#}
+    {#</ul>#}
+{#{% endblock %}#}
+
+{% extends 'template/table.html.twig' %}
+
+{% block TableTitle %}Editar elemento{% endblock %}
+
+{% block nuevoElemento %} {% endblock %}
+
+{% block headtable %}
+
+    <tr>
+        <th>Nombre</th>
+        <th>UM</th>
+        <th>Activo</th>
+        <th>Guardar</th>
+        <th>Volver</th>
+    </tr>
+
+{% endblock %}
+
+{% block bodytable %}
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+
+    <td>{{ form_widget(edit_form.name) }}</td>
+    <td>{{ form_widget(edit_form.um) }}</td>
+    <td>{{ form_widget(edit_form.active) }}</td>
+    <td><button class="btn btn-outline btn-circle btn-sm green" type="submit" >Guardar</button></td>
+    {#<td>{{ form_widget(edit_form.submit) }} </td>#}
+    <td><a class="btn btn-outline btn-circle btn-sm red" href="{{ path('insumo_index') }}"><i class="fa fa-mail-reply"></i> Back to the list</a></td>
+
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('insumo_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}
+
