@@ -1,0 +1,4 @@
+services:
+#    bcs_user_manager.example:
+#        class: BCS\UserManagerBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
