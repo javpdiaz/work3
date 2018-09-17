@@ -1,1 +1,5 @@
-Hello World!
+{% extends '@BCSUserManager/template/table.html.twig' %}
+
+{% block TableTitle %} Registro de Usuarios {% endblock %}
+
+{% block URLnuevoElemento %} {{ path('bcs_registro_page') }} {% endblock %}

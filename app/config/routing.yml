@@ -1,7 +1,7 @@
 bcs_user_manager:
     resource: "@BCSUserManagerBundle/Controller/"
     type:     annotation
-    prefix:   /
+
 
 app:
     resource: '@AppBundle/Controller/'
