@@ -1,8 +1,3 @@
-bcs_user_manager:
-    resource: "@BCSUserManagerBundle/Controller/"
-    type:     annotation
-
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
