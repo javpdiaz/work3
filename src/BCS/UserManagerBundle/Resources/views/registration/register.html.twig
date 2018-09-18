@@ -1,0 +1,92 @@
+{% extends 'template/base.html.twig' %}
+
+{% block body %}
+
+    <div class="page-wrapper-row full-height">
+        <div class="page-wrapper-middle">
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                <!-- BEGIN CONTENT -->
+                <div class="page-content-wrapper">
+                    <!-- BEGIN CONTENT BODY -->
+
+                    <!-- BEGIN PAGE CONTENT BODY -->
+                    <div class="page-content">
+                        <div class="container">
+
+                            <!-- BEGIN PAGE CONTENT INNER -->
+                            <div class="page-content-inner">
+                                <div class="row">
+                                    <div class="col-md-3" ></div>
+                                    <div class="col-md-6 ">
+                                        <!-- BEGIN SAMPLE FORM PORTLET-->
+                                        <div class="portlet light ">
+                                            <div class="portlet-title">
+                                                <div class="caption font-green">
+                                                    <i class="icon-user font-green"></i>
+                                                    <span class="caption-subject bold uppercase"> Registro</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="portlet-body form">
+                                                {{ form_start(form) }}
+                                                    <div class="form-body">
+
+                                                        <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                            {{ form_widget(form.username, {'attr': {'class': 'form-control input-lg'}}) }}
+
+                                                            {% if form_errors(form.username) %}
+                                                                <div class="alert alert-danger">{{ form_errors(form.username) }}</div>
+                                                            {% endif %}
+
+                                                            <label for="app_bundle_user_username">Nombre</label>
+                                                        </div>
+
+                                                        <div class="form-group form-md-line-input has-info">
+
+                                                            {{ form_widget(form.role, {'attr': {'class':'form-control'}}) }}
+
+                                                            <label for="form_control_1">Tipo de Usuario</label>
+                                                        </div>
+
+                                                        <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                            {{ form_widget(form.plainpassword.first, {'attr': {'class': 'form-control input-lg'}}) }}
+                                                            <label for="form_control_1">Contraseña</label>
+                                                        </div>
+
+                                                        <div class="form-group form-md-line-input form-md-floating-label has-info">
+                                                            {{ form_widget(form.plainpassword.second, {'attr': {'class': 'form-control input-lg'}}) }}
+                                                            <label for="form_control_1">Repetir Contraseña</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-actions noborder">
+                                                        <button type="submit" class="btn blue">Crear</button>
+                                                    </div>
+                                                {{ form_end(form) }}
+                                            </div>
+                                        </div>
+                                        <!-- END SAMPLE FORM PORTLET-->
+
+
+                                    </div>
+
+                                    <div class="col-md-3"></div>
+                                </div>
+
+
+                            </div>
+                            <!-- END PAGE CONTENT INNER -->
+                        </div>
+                    </div>
+                    <!-- END PAGE CONTENT BODY -->
+                    <!-- END CONTENT BODY -->
+                </div>
+                <!-- END CONTENT -->
+
+            </div>
+            <!-- END CONTAINER -->
+        </div>
+    </div>
+
+{% endblock %}
