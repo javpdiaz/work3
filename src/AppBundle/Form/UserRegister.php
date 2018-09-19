@@ -20,11 +20,11 @@ class UserRegister extends AbstractType
             ->add('username', TextType::class)
             ->add('role', ChoiceType::class, array('choices'=>array('Administrador'=>'ROLE_ADMIN', 'Usuario'=>'ROLE_USER')))
             ->add('plainpassword', RepeatedType::class, array(
-                'type'=>PasswordType::class,
+                'type'=>PasswordType::class, 'required'=>false,
                 'first_options'=> array('label'=>'Contraseña'),
                 'second_options'=>array('label'=>'Repetir Contraseña')
             ))
-        ->add('isActive', CheckboxType::class)
+        ->add('isActive', CheckboxType::class, array('required'=>false))
         ;
     }
 

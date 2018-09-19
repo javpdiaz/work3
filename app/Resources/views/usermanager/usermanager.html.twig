@@ -21,8 +21,25 @@
     {% for item in registerUser %}
         <tr>
             <td>{{ item.username }}</td>
-            <td>{{ item.role }}</td>
-            <td>{{ item.isActive }}</td>
+
+            {#***********Comprobar Rol**************************#}
+            {% if item.role == "ROLE_ADMIN" %}
+                <td>Administrador</td>
+            {% elseif item.role == "ROLE_USER" %}
+                <td>Usuario</td>
+            {% endif %}
+            {#***********END Comprobar Rol**********************#}
+
+
+            {#************Comprobar Activo**********************#}
+            {% if item.isActive == 1 %}
+                <td>Si</td>
+            {% elseif item.isActive == 0 %}
+                <td>No</td>
+            {% endif %}
+            {#***********END Comprobar Activo*******************#}
+
+
             {#<td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>#}
             <td><a class="btn btn-outline btn-circle btn-sm purple" href="{{ path('usermanager_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a></td>
         </tr>

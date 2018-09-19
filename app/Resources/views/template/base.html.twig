@@ -176,19 +176,26 @@
 
                                     </ul>
                                 </li>
-                                <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
-                                    <a href="javascript:;">
-                                        <i class="icon-user"></i> Cuentas de Usuario
-                                        <span class="arrow"></span>
-                                    </a>
-                                    <ul class="dropdown-menu pull-left">
 
-                                        <li aria-haspopup="true" class=" ">
-                                            <a href="{{ path('usermanager_index_page') }}" class="nav-link  "> Administrar Usuario </a>
-                                        </li>
+                                {% if is_granted('ROLE_ADMIN') %}
 
-                                    </ul>
-                                </li>
+                                    <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                        <a href="javascript:;">
+                                            <i class="icon-user"></i> Cuentas de Usuario
+                                            <span class="arrow"></span>
+                                        </a>
+                                        <ul class="dropdown-menu pull-left">
+
+                                            <li aria-haspopup="true" class=" ">
+                                                <a href="{{ path('usermanager_index_page') }}" class="nav-link  "> Administrar Usuario </a>
+                                            </li>
+
+                                        </ul>
+                                    </li>
+
+                                {% endif %}
+
+
 
                                 <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                     <a href="javascript:;"> Registros

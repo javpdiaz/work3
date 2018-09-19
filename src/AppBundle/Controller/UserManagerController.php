@@ -7,6 +7,7 @@ use AppBundle\Form\UserRegister;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Clase de control de usuarios registrados
@@ -32,13 +33,22 @@ class UserManagerController extends Controller
     /**
      * @Route("/{id}/edit", name="usermanager_edit")
      */
-    public function editAction(Request $request, User $user){
+    public function editAction(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder){
 
         $editForm = $this->createForm(UserRegister::class, $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()){
-            $this->getDoctrine()->getManager()->flush();
+
+
+            if (!is_null($user->getPlainPassword())) { //para evitar que cambie la contraseña en caso de editar y el campo esté vacio
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
+            }
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             return $this->redirectToRoute('usermanager_index_page');
         }
