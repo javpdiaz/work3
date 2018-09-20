@@ -15,7 +15,7 @@ class LoginController extends Controller
     /**
      * @Route("/login", name="login")
      */
-    public function LoginAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function LoginAction(Request $request)
     {
         $user = new User();
         $form = $this->createForm(UserLogin::class, $user);
