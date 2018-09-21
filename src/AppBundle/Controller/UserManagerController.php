@@ -30,6 +30,7 @@ class UserManagerController extends Controller
         return $this->render('usermanager/usermanager.html.twig', array('registerUser' => $registerUser));
     }
 
+
     /**
      * @Route("/{id}/edit", name="usermanager_edit")
      */
@@ -58,5 +59,49 @@ class UserManagerController extends Controller
             'edit_form'=>$editForm->createView()
         ));
 
+    }
+
+
+    /**
+     * @Route("/new", name="usermanager_new")
+     */
+    public function newAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $user = new User();
+        $form = $this->createForm(UserRegister::class, $user);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('princ_page');
+        }
+
+        return $this->render('usermanager/newuser.html.twig', array('new_form'=>$form->createView()));
+    }
+
+
+    /**
+     * @Route("/{id}", name="usermanager_delete")
+     */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $salv = $this->getDoctrine()->getRepository(User::class)->find($id);
+        $salv->setHide(true);
+
+        $em->persist($salv);
+        $em->flush();
+
+
+        return $this->redirectToRoute('usermanager_index_page');
     }
 }

@@ -71,9 +71,18 @@ class User implements UserInterface, \Serializable
      */
     private $role;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="hide", type="boolean")
+     */
+    private $hide;
+
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->hide = false;
     }
 
 
@@ -223,6 +232,24 @@ class User implements UserInterface, \Serializable
     {
         $this->plainPassword = $plainPassword;
     }
+
+    /**
+     * @return bool
+     */
+    public function isHide()
+    {
+        return $this->hide;
+    }
+
+    /**
+     * @param bool $hide
+     */
+    public function setHide($hide)
+    {
+        $this->hide = $hide;
+    }
+
+
 
     //endregion
 

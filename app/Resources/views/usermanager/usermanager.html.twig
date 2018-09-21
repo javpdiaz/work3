@@ -2,7 +2,7 @@
 
 {% block TableTitle %} Cuentas de Usuario {% endblock %}
 
-{% block URLnuevoElemento %} {{ path('um_new') }} {% endblock %}
+{% block URLnuevoElemento %} {{ path('usermanager_new') }} {% endblock %}
 
 {% block headtable %}
 
@@ -12,6 +12,7 @@
         <th>Activo</th>
         {#<th>Mostrar</th>#}
         <th>Editar</th>
+        <th>Borrar</th>
     </tr>
 
 {% endblock %}
@@ -19,29 +20,38 @@
 
 {% block bodytable %}
     {% for item in registerUser %}
-        <tr>
-            <td>{{ item.username }}</td>
 
-            {#***********Comprobar Rol**************************#}
-            {% if item.role == "ROLE_ADMIN" %}
-                <td>Administrador</td>
-            {% elseif item.role == "ROLE_USER" %}
-                <td>Usuario</td>
-            {% endif %}
-            {#***********END Comprobar Rol**********************#}
+        {% if item.hide == 0 %}{#Comprobar que no este borrado el usuario#}
+            <tr>
+                <td>{{ item.username }}</td>
 
-
-            {#************Comprobar Activo**********************#}
-            {% if item.isActive == 1 %}
-                <td>Si</td>
-            {% elseif item.isActive == 0 %}
-                <td>No</td>
-            {% endif %}
-            {#***********END Comprobar Activo*******************#}
+                {#***********Comprobar Rol**************************#}
+                {% if item.role == "ROLE_ADMIN" %}
+                    <td>Administrador</td>
+                {% elseif item.role == "ROLE_USER" %}
+                    <td>Usuario</td>
+                {% endif %}
+                {#***********END Comprobar Rol**********************#}
 
 
-            {#<td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>#}
-            <td><a class="btn btn-outline btn-circle btn-sm purple" href="{{ path('usermanager_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a></td>
-        </tr>
+                {#************Comprobar Activo**********************#}
+                {% if item.isActive == 1 %}
+                    <td>Si</td>
+                {% elseif item.isActive == 0 %}
+                    <td>No</td>
+                {% endif %}
+                {#***********END Comprobar Activo*******************#}
+
+
+                {#<td><a class="btn btn-outline btn-circle btn-sm green" href="{{ path('um_show', { 'id': item.id }) }}"><i class="fa fa-eye"></i> Mostrar</a></td>#}
+                <td><a class="btn btn-outline btn-circle btn-sm purple"
+                       href="{{ path('usermanager_edit', { 'id': item.id }) }}"><i class="fa fa-edit"></i> Editar</a>
+                </td>
+                <td><a class="btn btn-outline btn-circle btn-sm red"
+                       href="{{ path('usermanager_delete', { 'id': item.id }) }}"><i class="fa fa-trash"></i> Borrar</a>
+                </td>
+            </tr>
+        {% endif %}
+
     {% endfor %}
 {% endblock %}

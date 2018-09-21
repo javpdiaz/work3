@@ -1,0 +1,37 @@
+{% extends 'template/table.html.twig' %}
+
+{% block TableTitle %}Crear Elemento{% endblock %}
+{% block dataTableCSS %} {% endblock %}
+{% block nuevoElemento %} {% endblock %}
+
+{% block headtable %}
+
+    <tr>
+        <th>Nombre</th>
+        <th>Contraseña</th>
+        <th>Repetir Contraseña</th>
+        <th>Rol</th>
+        <th>Activo</th>
+        <th>Crear</th>
+        <th>Volver</th>
+    </tr>
+
+{% endblock %}
+
+{% block bodytable %}
+
+    {{ form_start(new_form) }}
+
+    <td>{{ form_widget(new_form.username) }}</td>
+    <td>{{ form_widget(new_form.plainpassword.first) }}</td>
+    <td>{{ form_widget(new_form.plainpassword.second) }}</td>
+    <td>{{ form_widget(new_form.role) }}</td>
+    <td>{{ form_widget(new_form.isActive) }}</td>
+    <td><button class="btn btn-outline btn-circle btn-sm green" type="submit" ><i class="fa fa-save"></i> Crear</button></td>
+    <td><a class="btn btn-outline btn-circle btn-sm red" href="{{ path('usermanager_index_page') }}"><i class="fa fa-mail-reply"></i> Volver a la Lista</a></td>
+
+    {{ form_end(new_form) }}
+
+{% endblock %}
+
+{% block dataTableJS %} {% endblock %}
